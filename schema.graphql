@@ -1,0 +1,35 @@
+type StarterEntity @entity {
+
+  id: ID! #id is a required field
+
+  signature: String!
+
+  blockHash: String!
+  
+  blockNumber: BigInt!
+
+  blockHeigh: Int!
+
+  programId: [String!]
+
+  status: String! #filed2 is an optional field
+
+}
+
+type Transaction @entity {
+
+  id: ID! #id is a required field
+
+  blockHash: String!
+  
+  blockHeigh: Int!
+
+  slot: BigInt!
+
+  signature: String!
+
+  programId: [String!]
+
+  status: String!
+
+}
