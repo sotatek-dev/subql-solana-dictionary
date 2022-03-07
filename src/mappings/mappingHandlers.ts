@@ -15,7 +15,13 @@ function makeId(length) {
 }
 
 export async function handleBlock(block: any): Promise<void> {
-  const blockValue = block.block.block;
+  if (!block) {
+    return;
+  }
+  if (!block.block) {
+    return;
+  }
+  const blockValue = block.block;
   const transactions = blockValue.transactions;
   const blockhash = blockValue.blockhash;
   const blockHeight = blockValue.blockHeight;
@@ -29,15 +35,23 @@ export async function handleBlock(block: any): Promise<void> {
       record = await new Transaction(id);
     }
     // Record block number
-    record.blockHash = blockhash ? blockhash.toString() : '';
+    record.blockHash = blockhash ? blockhash.toString() : "";
     record.slot = blockSlot ? +blockSlot : 0;
     record.blockHeight = blockHeight ? +blockHeight : 0;
-    record.signature = transactions[i].transaction.signatures[0] ? transactions[i].transaction.signatures[0] : '';
-    record.programId = transactions[i].meta.logMessages ? [...new Set(transactions[i].meta.logMessages.map(log => log.split(' ')[1]))] as string[] : [''];
-    record.status = transactions[i].meta.status.Err ? 'ERR' : 'OK';
+    record.signature = transactions[i].transaction.signatures[0]
+      ? transactions[i].transaction.signatures[0]
+      : "";
+    record.programId = transactions[i].meta.logMessages
+      ? ([
+          ...new Set(
+            transactions[i].meta.logMessages.map((log) => log.split(" ")[1])
+          ),
+        ] as string[])
+      : [""];
+    record.status = transactions[i].meta.status.Err ? "ERR" : "OK";
     records.push(record);
   }
-  store.bulkCreate('Transaction',records);
+  store.bulkCreate("Transaction", records);
 }
 
 // export async function handleBlock(block: any): Promise<void> {
