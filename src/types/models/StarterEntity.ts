@@ -20,7 +20,7 @@ export class StarterEntity implements Entity {
 
   public blockNumber?: number;
 
-  public blockHeigh?: number;
+  public blockHeight?: number;
 
   public programId?: string[];
 

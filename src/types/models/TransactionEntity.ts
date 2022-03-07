@@ -14,7 +14,7 @@ export class Transaction implements Entity {
 
     public blockHash?: string;
 
-    public blockHeigh?: number;
+    public blockHeight?: number;
 
     public slot?: number;
 

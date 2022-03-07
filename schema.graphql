@@ -8,7 +8,7 @@ type StarterEntity @entity {
   
   blockNumber: BigInt!
 
-  blockHeigh: Int!
+  blockHeight: Int!
 
   programId: [String!]
 
@@ -22,7 +22,7 @@ type Transaction @entity {
 
   blockHash: String!
   
-  blockHeigh: Int!
+  blockHeight: Int!
 
   slot: BigInt!
 

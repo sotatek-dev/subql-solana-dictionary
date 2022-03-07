@@ -18,7 +18,7 @@ export async function handleBlock(block: any): Promise<void> {
   const blockValue = block.block.block;
   const transactions = blockValue.transactions;
   const blockhash = blockValue.blockhash;
-  const blockHeigh = blockValue.blockHeight;
+  const blockHeight = blockValue.blockHeight;
   const blockSlot = blockValue.parentSlot + 1;
   const records: any = [];
   for (let i = 0; i < transactions.length; i++) {
@@ -31,7 +31,7 @@ export async function handleBlock(block: any): Promise<void> {
     // Record block number
     record.blockHash = blockhash ? blockhash.toString() : '';
     record.slot = blockSlot ? +blockSlot : 0;
-    record.blockHeigh = blockHeigh ? +blockHeigh : 0;
+    record.blockHeight = blockHeight ? +blockHeight : 0;
     record.signature = transactions[i].transaction.signatures[0] ? transactions[i].transaction.signatures[0] : '';
     record.programId = transactions[i].meta.logMessages ? [...new Set(transactions[i].meta.logMessages.map(log => log.split(' ')[1]))] as string[] : [''];
     record.status = transactions[i].meta.status.Err ? 'ERR' : 'OK';
