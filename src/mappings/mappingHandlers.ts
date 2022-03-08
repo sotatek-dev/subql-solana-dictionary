@@ -48,7 +48,7 @@ export async function handleBlock(block: any): Promise<void> {
           ),
         ] as string[])
       : [""];
-    record.status = transactions[i].meta.status.Err ? "ERR" : "OK";
+    record.status = Object.keys(transactions[i].meta.status)[0];
     records.push(record);
   }
   store.bulkCreate("Transaction", records);
