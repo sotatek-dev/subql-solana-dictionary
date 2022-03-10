@@ -41,14 +41,19 @@ export async function handleBlock(block: any): Promise<void> {
     record.signature = transactions[i].transaction.signatures[0]
       ? transactions[i].transaction.signatures[0]
       : "";
-    record.programId = transactions[i].meta.logMessages
-      ? ([
-          ...new Set(
-            transactions[i].meta.logMessages.map((log) => log.split(" ")[1])
-          ),
-        ] as string[])
-      : [""];
-    record.status = Object.keys(transactions[i].meta.status).length ? Object.keys(transactions[i].meta.status)[0] : 'unknown';
+    if (transactions[i].meta) {
+      record.programId = transactions[i].meta.logMessages
+        ? ([
+            ...new Set(
+              transactions[i].meta.logMessages.map((log) => log.split(" ")[1])
+            ),
+          ] as string[])
+        : null;
+      record.status = Object.keys(transactions[i].meta.status).length
+        ? Object.keys(transactions[i].meta.status)[0]
+        : null;
+    }
+
     records.push(record);
   }
   store.bulkCreate("Transaction", records);
