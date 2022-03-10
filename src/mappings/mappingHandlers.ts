@@ -40,7 +40,7 @@ export async function handleBlock(block: any): Promise<void> {
     record.blockHeight = blockHeight ? +blockHeight : 0;
     record.signature = transactions[i].transaction.signatures[0]
       ? transactions[i].transaction.signatures[0]
-      : "";
+      : null;
     if (transactions[i].meta) {
       record.programId = transactions[i].meta.logMessages
         ? ([
