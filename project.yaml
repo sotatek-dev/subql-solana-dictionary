@@ -6,11 +6,11 @@ repository: https://github.com/subquery/subql-starter
 schema:
   file: ./schema.graphql
 network:
-  endpoint: https://api.testnet.solana.com
+  endpoint: https://ancient-cold-log.solana-mainnet.quiknode.pro/22dca31ccc366ea3d664aeef3c1e1e84e67740b4/
   genesisHash: '0x91b171bb158e2d3848fa23a9f1c25182fb8e20313b2c1eb49219da7a70ce90c3'
 dataSources:
   - kind: solana/Runtime
-    startBlock: 121312355
+    startBlock: 1
     mapping:
       file: ./dist/index.js
       handlers:
