@@ -12,6 +12,8 @@ type Transaction @entity {
 
   programId: [String]
 
+  instruction: [String]
+
   status: String
 
 }
